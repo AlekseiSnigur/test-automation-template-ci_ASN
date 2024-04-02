@@ -18,14 +18,13 @@ public class OrderDto {
 
     // static method to use factory
     public static OrderDto createRandomOrder() {
-        // builder
         return OrderDto.builder()
                 .status("OPEN")
-                .courierId(0)
+                .courierId(RandomDataGenerator.generateCourierId())
                 .customerName(RandomDataGenerator.generateName())
-                .customerPhone("12343456")
-                .comment("comment")
-                .id(1)
+                .customerPhone(RandomDataGenerator.generatePhoneNumber())
+                .comment(RandomDataGenerator.generateComment())
+                .id(RandomDataGenerator.generateId())
                 .build();
     }
 }

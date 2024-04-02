@@ -4,6 +4,7 @@ import delivery.dto.OrderDto;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import delivery.utils.ApiClient;
 
@@ -19,12 +20,12 @@ public class OrderTest extends BaseSetupApi {
         );
     }
 
-    @Test
+    @RepeatedTest(5)
     void createOrderAndCheckResponse() {
 
         // order creation
         OrderDto orderDto = OrderDto.createRandomOrder();
-        Response response = ApiClient.createOrder(getAuthenticatedRequestSpecification(), orderDto );
+        Response response = ApiClient.createOrder(getAuthenticatedRequestSpecification(), orderDto);
 
         Assertions.assertAll("Test description",
                 () -> Assertions.assertEquals(HttpStatus.SC_OK, response.getStatusCode(), "Status code is OK"),
