@@ -25,7 +25,6 @@ public class BaseSetupApi {
 
         // get data from config
         RestAssured.baseURI = configuration.getString("base-url");
-
         String password = System.getProperty("password");
         String username = System.getProperty("username");
 
