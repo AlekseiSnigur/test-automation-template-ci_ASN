@@ -19,6 +19,7 @@
         <allure-junit5.version>2.13.1</allure-junit5.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <selenide.version>7.2.3</selenide.version>
     </properties>
 
     <dependencies>
@@ -56,7 +57,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -70,6 +70,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>7.2.3</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -78,7 +85,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
-                <!-- AspectJ is needed to process some annotation like @Attachment etc.-->
+
                 <configuration>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"
@@ -95,12 +102,12 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <!-- This is optional. It enables mvn goals: allure:serve allure:report -->
+
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>${allure-maven.version}</version>
-                <!-- If you don't define report version the plugin will work, but may use the older one.-->
+
                 <configuration>
                     <reportVersion>2.13.1</reportVersion>
                     <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>

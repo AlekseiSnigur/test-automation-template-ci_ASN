@@ -32,7 +32,7 @@ public class ApiClient extends BaseSetupApi {
                 .log()
                 .all()
                 .body(orderDto)
-                .post( "orders")
+                .post( "order")
                 .then()
                 .log()
                 .all()
@@ -56,7 +56,6 @@ public class ApiClient extends BaseSetupApi {
                 .extract()
                 .response()
                 .asString();
-
         return token;
     }
 
